@@ -7,6 +7,8 @@
 <meta name="description" content="Soul — зелёный «оазис» в центре столицы. Площадка для мероприятий 550 кв.м: свадьбы, банкеты, корпоративы, концерты, фуршеты и гала-ужины." />
 <meta name="color-scheme" content="dark" />
 <meta name="theme-color" content="#070b09" />
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -92,12 +94,12 @@
 
   /* ---------- fixed chrome ---------- */
   .brand{
-    position:fixed; top:26px; left:clamp(20px,5vw,64px); z-index:70;
-    font-family:var(--font-serif); font-size:22px; letter-spacing:.14em;
-    display:flex; align-items:baseline; gap:8px;
+    position:fixed; top:18px; left:clamp(16px,4vw,56px); z-index:70;
   }
-  .brand b{ color:var(--gold-soft); font-weight:500; }
-  .brand span{ font-size:9px; letter-spacing:.3em; color:var(--ash); font-family:var(--font-sans); text-transform:uppercase; }
+  .brand img{
+    height:clamp(52px,7vw,68px); width:auto;
+    filter:drop-shadow(0 3px 14px rgba(0,0,0,.55));
+  }
 
   .dots{
     position:fixed; right:28px; top:50%; transform:translateY(-50%); z-index:70;
@@ -290,7 +292,7 @@
 </head>
 <body class="grain">
 
-<div class="brand"><b>Soul</b><span>Event Space</span></div>
+<div class="brand"><img src="images/logo-mark.png" alt="Soul Event" /></div>
 
 <nav class="dots" aria-label="Навигация по слайдам">
   <a href="#s1" class="active" data-i="1" aria-label="Слайд 1"></a>
