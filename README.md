@@ -21,12 +21,13 @@ python3 -m http.server 8080
 
 ## Хостинг
 
-В репозитории настроен GitHub Pages (деплой из ветки `main`, GitHub Actions).
-После первого пуша сайт будет доступен по адресу:
+Сайт опубликован через GitHub Pages из ветки `gh-pages`.
+При каждом пуше в `main` workflow пересобирает эту ветку автоматически.
+Сайт доступен по адресу:
 
 `https://dancekilla1999-gif.github.io/soul-event-space/`
 
-(включить можно в Settings → Pages → Source: GitHub Actions, если ещё не включено).
+Ветку `gh-pages` править вручную не нужно — она перезаписывается workflow.
 
 ## Что нужно доделать
 
