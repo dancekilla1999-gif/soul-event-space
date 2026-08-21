@@ -26,7 +26,7 @@
     --gold:#C9A227;
     --gold-soft:#E4CE8F;
     --bone:#EDEAE0;
-    --ash:#9AA79C;
+    --ash:#AFBAB1;
     --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
     --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
   }
@@ -37,7 +37,7 @@
     background:var(--bg);
     color:var(--bone);
     font-family:var(--font-sans);
-    font-weight:300;
+    font-weight:400;
     line-height:1.5;
     overflow-x:hidden;
     background-image:
@@ -92,15 +92,6 @@
     font-family:var(--font-sans); font-size:11px; letter-spacing:.28em; color:var(--ash);
   }
 
-  /* ---------- fixed chrome ---------- */
-  .brand{
-    position:fixed; top:18px; left:clamp(16px,4vw,56px); z-index:70;
-  }
-  .brand img{
-    height:clamp(52px,7vw,68px); width:auto;
-    filter:drop-shadow(0 3px 14px rgba(0,0,0,.55));
-  }
-
   .dots{
     position:fixed; right:28px; top:50%; transform:translateY(-50%); z-index:70;
     display:flex; flex-direction:column; gap:16px;
@@ -136,10 +127,22 @@
     content:"";
     position:absolute; inset:0;
     background:
-      radial-gradient(ellipse 75% 55% at 50% 0%, rgba(5,8,7,0.35), transparent 60%),
-      linear-gradient(180deg, rgba(5,8,7,0.55) 0%, rgba(5,8,7,0.25) 30%, rgba(5,8,7,0.55) 68%, rgba(5,8,7,0.96) 100%);
+      /* тёмная линза точно под логотипом и заголовком — иначе текст тонет в лучах света */
+      radial-gradient(ellipse 96% 46% at 50% 47%, rgba(5,8,7,0.80), rgba(5,8,7,0.34) 60%, transparent 80%),
+      linear-gradient(180deg, rgba(5,8,7,0.60) 0%, rgba(5,8,7,0.32) 22%, rgba(5,8,7,0.52) 58%, rgba(5,8,7,0.97) 100%);
+  }
+  @media (max-width:640px){
+    .hero-bg::after{
+      background:
+        radial-gradient(ellipse 130% 42% at 50% 45%, rgba(5,8,7,0.86), rgba(5,8,7,0.42) 62%, transparent 84%),
+        linear-gradient(180deg, rgba(5,8,7,0.66) 0%, rgba(5,8,7,0.40) 20%, rgba(5,8,7,0.58) 58%, rgba(5,8,7,0.97) 100%);
+    }
   }
   .hero-content{ position:relative; z-index:2; text-align:center; }
+  .hero-logo{
+    width:clamp(190px,26vw,300px); height:auto; margin:0 auto clamp(18px,3vh,32px);
+    filter:drop-shadow(0 6px 26px rgba(0,0,0,.65));
+  }
   .hero-content h1{
     font-size:clamp(34px,6vw,72px); line-height:1.08; margin:22px auto 18px; max-width:16em;
     color:var(--bone);
@@ -159,7 +162,7 @@
   .about-grid{ display:grid; grid-template-columns: 1.05fr .95fr; gap:clamp(32px,5vw,72px); align-items:center; }
   @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; } }
   .about-grid h2{ font-size:clamp(30px,4vw,48px); margin-bottom:22px; }
-  .about-grid p{ color:var(--ash); font-size:clamp(15px,1.5vw,18px); line-height:1.75; margin-bottom:18px; max-width:46ch; }
+  .about-grid p{ color:var(--ash); font-size:clamp(16px,1.5vw,18px); line-height:1.8; margin-bottom:18px; max-width:46ch; }
   .about-grid p strong{ color:var(--bone); font-weight:500; }
 
   .photo-pair{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -176,15 +179,6 @@
     font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:rgba(237,234,224,.75);
   }
   .frame::before{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55) 100%); }
-
-  /* generated "photo" art variants — placeholders for slide 6 (no real photos supplied for these yet) */
-  .art-cocktail{ background:
-    radial-gradient(circle at 65% 30%, rgba(228,206,143,.3), transparent 45%),
-    radial-gradient(circle at 25% 75%, rgba(96,168,128,.25), transparent 45%),
-    linear-gradient(160deg, #131c15 0%, #070a08 100%); }
-  .art-food{ background:
-    radial-gradient(circle at 50% 50%, rgba(228,206,143,.28), transparent 50%),
-    linear-gradient(160deg, #171310 0%, #0a0806 100%); }
 
   /* ================= SLIDE 3 — ХАРАКТЕРИСТИКИ ================= */
   .char-grid{ display:grid; grid-template-columns: .85fr 1.15fr; gap:clamp(32px,5vw,64px); align-items:start; }
@@ -240,38 +234,32 @@
   .tech-card li::before{ content:"·"; position:absolute; left:0; color:var(--emerald-soft); }
   .tech-card li b{ color:var(--bone); font-weight:500; }
 
-  /* ================= SLIDE 5 — КАЛЬЯНЫ ================= */
-  .hookah-grid{ display:grid; grid-template-columns:.72fr 1.28fr; gap:clamp(28px,4vw,56px); align-items:center; }
-  @media (max-width:900px){ .hookah-grid{ grid-template-columns:1fr; } }
-  .hookah-grid h2{ font-size:clamp(28px,3.8vw,44px); margin-bottom:18px; }
-  .hookah-grid p{ color:var(--ash); font-size:clamp(14.5px,1.4vw,17px); line-height:1.7; margin-bottom:16px; max-width:52ch; }
-  .hookah-grid p strong{ color:var(--bone); font-weight:500; }
-
-  .tobacco-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:6px; }
-  @media (max-width:900px){ .tobacco-grid{ grid-template-columns:repeat(2,1fr); } }
-  .tobacco-grid a{
-    position:relative; display:block; overflow:hidden; border-radius:3px;
-    border:1px solid var(--border); background:rgba(255,255,255,0.03);
-    transition:border-color .35s ease, transform .35s ease, box-shadow .35s ease;
-  }
-  .tobacco-grid a:hover{
-    border-color:rgba(228,206,143,.5); transform:translateY(-3px);
-    box-shadow:0 18px 40px -22px rgba(0,0,0,.85);
-  }
-  .tobacco-grid img{ width:100%; height:auto; }
-  .tobacco-hint{ margin-top:12px; font-size:11.5px; letter-spacing:.08em; color:var(--ash); }
-
-  /* ================= SLIDE 6 — ДОП ОПЦИИ ================= */
-  .opt-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; max-width:840px; }
-  @media (max-width:900px){ .opt-grid{ grid-template-columns:1fr; } }
+  /* ================= SLIDE 5 — ДОП ОПЦИИ ================= */
+  .opt-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:860px; }
+  @media (max-width:760px){ .opt-grid{ grid-template-columns:1fr; } }
   .opt-card{ border:1px solid var(--border); border-radius:4px; overflow:hidden; background:var(--panel); }
-  .opt-card .frame{ aspect-ratio:4/3; border:none; border-radius:0; }
-  .opt-card .body{ padding:20px 20px 24px; }
-  .opt-card h4{ font-family:var(--font-serif); font-size:22px; font-weight:500; margin-bottom:8px; }
-  .opt-card p{ font-size:13.5px; color:var(--ash); line-height:1.6; }
+  .opt-card .frame{ aspect-ratio:1/1; border:none; border-radius:0; }
+  @media (max-width:760px){ .opt-card .frame{ aspect-ratio:4/5; } }
+  .opt-card .frame img{ object-position:50% 40%; }
+  .opt-card .body{ padding:22px 22px 26px; }
+  .opt-card h4{ font-family:var(--font-serif); font-size:24px; font-weight:500; margin-bottom:10px; }
+  .opt-card p{ font-size:14.5px; color:var(--ash); line-height:1.65; }
 
-  /* ================= SLIDE 7 — КОНТАКТЫ ================= */
-  #s7{ overflow:hidden; }
+  /* панель «1000 кв.м» вместо фото у второй опции */
+  .opt-figure{ display:flex; align-items:center; justify-content:center; text-align:center;
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 40%, rgba(96,168,128,.16), transparent 65%),
+      linear-gradient(165deg, #101c15 0%, #070c09 100%); }
+  .opt-figure .fig{ position:relative; z-index:2; }
+  .opt-figure .num{ display:block; font-family:var(--font-serif); font-size:clamp(52px,7vw,78px);
+    line-height:1; color:var(--gold-soft); }
+  .opt-figure .unit{ display:block; margin-top:6px; font-size:13px; letter-spacing:.22em;
+    text-transform:uppercase; color:var(--emerald-soft); }
+  .opt-figure .rule{ width:54px; height:1px; margin:18px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
+  .opt-figure .sub{ display:block; font-size:12.5px; letter-spacing:.14em; color:var(--ash); }
+
+  /* ================= SLIDE 6 — КОНТАКТЫ ================= */
+  #s6{ overflow:hidden; }
   .contact-bg{ position:absolute; inset:0; z-index:0; }
   .contact-bg img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 30%; opacity:.4; }
   .contact-bg::after{
@@ -280,18 +268,21 @@
       radial-gradient(ellipse 70% 60% at 50% 40%, rgba(7,11,9,0.55), rgba(5,8,7,0.94)),
       linear-gradient(180deg, rgba(5,8,7,0.55) 0%, rgba(5,8,7,0.85) 100%);
   }
-  #s7 .wrap{ position:relative; z-index:2; text-align:center; }
+  #s6 .wrap{ position:relative; z-index:2; text-align:center; }
   .contact-wrap{ max-width:720px; margin:0 auto; }
   .contact-wrap h2{ font-size:clamp(30px,4.5vw,52px); margin-bottom:16px; }
   .contact-wrap > p{ color:var(--ash); font-size:15.5px; max-width:48ch; margin:0 auto 40px; }
   .contact-fields{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:34px; text-align:left; }
   @media (max-width:640px){ .contact-fields{ grid-template-columns:1fr; } }
   .field{
-    border:1px dashed rgba(237,234,224,.28); border-radius:4px; padding:14px 16px;
-    background:rgba(255,255,255,0.02);
+    border:1px solid var(--border); border-radius:4px; padding:15px 18px;
+    background:rgba(255,255,255,0.03); transition:border-color .35s ease;
   }
-  .field .k{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:6px; }
-  .field .v{ font-size:14.5px; color:var(--ash); font-style:italic; }
+  .field:hover{ border-color:rgba(228,206,143,.35); }
+  .field .k{ font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold-soft); margin-bottom:7px; }
+  .field .v{ font-size:16px; color:var(--bone); font-weight:400; }
+  .field .v a{ color:var(--bone); transition:color .3s ease; }
+  .field .v a:hover{ color:var(--gold-soft); }
   .cta{
     display:inline-flex; align-items:center; gap:10px; padding:16px 38px; border-radius:99px;
     background:linear-gradient(160deg,#a8c9b3 0%, #6fa98a 45%, #3e8464 100%);
@@ -302,14 +293,39 @@
   .foot-note{ margin-top:40px; font-size:11.5px; letter-spacing:.12em; color:var(--ash); text-transform:uppercase; }
 
   @media (max-width:640px){
-    .slide{ padding-top:100px; }
+    .slide{ padding-top:76px; padding-bottom:64px; }
     .about-grid{ gap:26px; }
+
+    /* на телефоне текст крупнее и плотнее по контрасту */
+    .hero-content h1{ font-size:clamp(31px,8.4vw,44px); line-height:1.14; }
+    .hero-sub{ font-size:16px; }
+    .eyebrow{ font-size:11.5px; letter-spacing:.24em; }
+    .about-grid h2, .contact-wrap h2{ font-size:32px; }
+    .about-grid p{ font-size:17px; line-height:1.8; }
+    .spec-item{ font-size:16.5px; }
+    .stat-card .num{ font-size:32px; }
+    .stat-card .lbl{ font-size:13px; }
+    .price-table td{ font-size:16.5px; }
+    .price-table td:last-child{ font-size:21px; }
+    .price-table th{ font-size:12px; }
+    .tag{ font-size:14px; padding:9px 17px; }
+    h3.sub{ font-size:13px; }
+    .check-item div{ font-size:16px; }
+    .check-item span{ font-size:14px; }
+    .stage-box{ font-size:16px; }
+    .tech-card h4{ font-size:21px; }
+    .tech-card li{ font-size:15px; line-height:1.6; }
+    .opt-card h4{ font-size:23px; }
+    .opt-card p{ font-size:15.5px; }
+    .contact-wrap > p{ font-size:16.5px; }
+    .field .k{ font-size:11px; }
+    .field .v{ font-size:17px; }
+    .cta{ font-size:15px; padding:17px 34px; }
+    .slide-index{ font-size:10px; }
   }
 </style>
 </head>
 <body class="grain">
-
-<div class="brand"><img src="images/logo-mark.png" alt="Soul Event" /></div>
 
 <nav class="dots" aria-label="Навигация по слайдам">
   <a href="#s1" class="active" data-i="1" aria-label="Слайд 1"></a>
@@ -318,8 +334,7 @@
   <a href="#s4" data-i="4" aria-label="Слайд 4"></a>
   <a href="#s5" data-i="5" aria-label="Слайд 5"></a>
   <a href="#s6" data-i="6" aria-label="Слайд 6"></a>
-  <a href="#s7" data-i="7" aria-label="Слайд 7"></a>
-</nav>
+  </nav>
 
 <div class="slides">
 
@@ -330,6 +345,7 @@
     </div>
 
     <div class="wrap hero-content reveal in">
+      <img class="hero-logo" src="images/logo-mark.png" alt="Soul Event" />
       <p class="eyebrow" style="justify-content:center; display:flex;">Событийная площадка</p>
       <h1>Soul — <em>зелёный «оазис»</em><br>в центре столицы</h1>
       <p class="hero-sub">Площадка для мероприятий</p>
@@ -340,14 +356,14 @@
 
   <!-- ============ SLIDE 2 — О МЕСТЕ ============ -->
   <section class="slide" id="s2">
-    <span class="slide-index">02 / 07</span>
+    <span class="slide-index">02 / 06</span>
     <div class="wrap">
       <div class="about-grid">
         <div class="reveal">
           <div class="kicker"><span class="line"></span><span class="eyebrow">О площадке</span></div>
           <h2>Место с характером</h2>
           <p>Место с характером, зелёный «оазис», где каждая деталь дышит стилем и уютом для воплощения самых смелых идей.</p>
-          <p><strong>Наши 550 кв.м.</strong> — идеальный холст для свадеб, шикарных банкетов, дней рождений, квартирников, деловых корпоративов, изысканных фуршетов, гала-ужинов, концертов и вечеринок до утра.</p>
+          <p>Наши 550 кв.м. — идеальный холст для свадеб, шикарных банкетов, дней рождений, квартирников, деловых корпоративов, изысканных фуршетов, гала-ужинов, концертов и вечеринок до утра.</p>
           <p>Авторская кухня придаст гастрономический тон, а зелень вокруг создаст ощущение свободы даже в центре столицы.</p>
         </div>
         <div class="photo-pair reveal d2">
@@ -366,7 +382,7 @@
 
   <!-- ============ SLIDE 3 — ХАРАКТЕРИСТИКИ ============ -->
   <section class="slide" id="s3">
-    <span class="slide-index">03 / 07</span>
+    <span class="slide-index">03 / 06</span>
     <div class="wrap">
       <div class="char-grid">
         <div class="reveal">
@@ -420,7 +436,7 @@
 
   <!-- ============ SLIDE 4 — ЧТО ВХОДИТ / ТЕХ ============ -->
   <section class="slide" id="s4">
-    <span class="slide-index">04 / 07</span>
+    <span class="slide-index">04 / 06</span>
     <div class="wrap">
       <div class="incl-grid">
         <div class="reveal">
@@ -467,67 +483,46 @@
     </div>
   </section>
 
-  <!-- ============ SLIDE 5 — КАЛЬЯНЫ ============ -->
+  <!-- ============ SLIDE 5 — ДОП. ОПЦИИ ============ -->
   <section class="slide" id="s5">
-    <span class="slide-index">05 / 07</span>
-    <div class="wrap">
-      <div class="hookah-grid">
-        <div class="frame reveal">
-          <img src="images/hookah-hero.jpg" alt="Кальян «Соул»" loading="lazy" />
-          <span class="cap">Кальяны «Соул»</span>
-        </div>
-
-        <div class="reveal d1">
-          <div class="kicker"><span class="line"></span><span class="eyebrow">Дополнительно</span></div>
-          <h2>Кальяны</h2>
-          <p>Авторские кальянные миксы для гостей — атмосферный акцент к любому формату мероприятия. Кальянный мастер работает весь вечер и подбирает вкус под каждый стол.</p>
-          <p><strong>Табачная карта «Соул»</strong> — Bonche, Kraken, Black Burn, Dark Side, Overdose, Starline, Must Have, Sebero, Sapphire Crown, Chabacco, Trofimoff's, Jent, Deus и Сарма.</p>
-
-          <div class="tobacco-grid">
-            <a href="images/tobacco-bonche-kraken.jpg" target="_blank" rel="noopener">
-              <img src="images/tobacco-bonche-kraken.jpg" alt="Табачная карта: Bonche и Kraken" loading="lazy" />
-            </a>
-            <a href="images/tobacco-blackburn-darkside.jpg" target="_blank" rel="noopener">
-              <img src="images/tobacco-blackburn-darkside.jpg" alt="Табачная карта: Black Burn, Dark Side, Overdose, Starline" loading="lazy" />
-            </a>
-            <a href="images/tobacco-musthave-sebero.jpg" target="_blank" rel="noopener">
-              <img src="images/tobacco-musthave-sebero.jpg" alt="Табачная карта: Must Have, Sebero, Sapphire Crown, Deus" loading="lazy" />
-            </a>
-            <a href="images/tobacco-selection.jpg" target="_blank" rel="noopener">
-              <img src="images/tobacco-selection.jpg" alt="Избранные вкусы табачной карты «Соул»" loading="lazy" />
-            </a>
-          </div>
-          <p class="tobacco-hint">Нажмите на карту, чтобы рассмотреть вкусы</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SLIDE 6 — ДОП. ОПЦИИ ============ -->
-  <section class="slide" id="s6">
-    <span class="slide-index">06 / 07</span>
+    <span class="slide-index">05 / 06</span>
     <div class="wrap">
       <div class="kicker reveal"><span class="line"></span><span class="eyebrow">Дополнительно</span></div>
       <h2 class="reveal" style="font-size:clamp(28px,3.8vw,44px); margin-bottom:30px;">Дополнительные опции</h2>
       <div class="opt-grid">
         <div class="opt-card reveal">
-          <div class="frame"><div class="art art-cocktail" role="img" aria-label="Фото: коктейльный бар"></div></div>
-          <div class="body"><h4>Коктейльный бар</h4><p>Барная программа и коктейль-шоу под ваше мероприятие — от классики до авторских рецептов.</p></div>
+          <div class="frame">
+            <img src="images/hookah-hero.jpg" alt="Кальяны «Соул»" loading="lazy" />
+          </div>
+          <div class="body">
+            <h4>Кальяны</h4>
+            <p>Авторские кальянные миксы для гостей — атмосферный акцент к любому формату мероприятия. Кальянный мастер работает весь вечер и подбирает вкус под каждый стол.</p>
+          </div>
         </div>
         <div class="opt-card reveal d1">
-          <div class="frame"><div class="art art-food" role="img" aria-label="Фото: блюда"></div></div>
-          <div class="body"><h4>Фотозона блюд</h4><p>Стильная подача и предметная съёмка блюд для афиши и соцсетей.</p></div>
+          <div class="frame opt-figure">
+            <div class="fig">
+              <span class="num">1000</span>
+              <span class="unit">кв.м</span>
+              <span class="rule"></span>
+              <span class="sub">два зала · два этажа</span>
+            </div>
+          </div>
+          <div class="body">
+            <h4>Опция «Хочу больше»</h4>
+            <p>Возможность аренды двух залов общей площадью 1000 кв.м на двух этажах.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ SLIDE 7 — КОНТАКТЫ ============ -->
-  <section class="slide" id="s7" style="border-bottom:none;">
+  <!-- ============ SLIDE 6 — КОНТАКТЫ ============ -->
+  <section class="slide" id="s6" style="border-bottom:none;">
     <div class="contact-bg" aria-hidden="true">
       <img src="images/chandelier-lightfloor.jpg" alt="" loading="lazy" />
     </div>
-    <span class="slide-index">07 / 07</span>
+    <span class="slide-index">06 / 06</span>
     <div class="wrap">
       <div class="contact-wrap reveal">
         <div class="kicker" style="justify-content:center;"><span class="line"></span><span class="eyebrow">Контакты</span></div>
@@ -535,14 +530,14 @@
         <p>Оставьте заявку — рассчитаем площадку под формат вашего мероприятия и подберём удобную дату.</p>
 
         <div class="contact-fields">
-          <div class="field"><div class="k">Телефон</div><div class="v">— укажите номер —</div></div>
-          <div class="field"><div class="k">E-mail</div><div class="v">— укажите почту —</div></div>
-          <div class="field"><div class="k">Адрес</div><div class="v">— укажите адрес, Москва —</div></div>
-          <div class="field"><div class="k">Соцсети</div><div class="v">— Telegram / Instagram / WhatsApp —</div></div>
+          <div class="field"><div class="k">Телефон · Telegram</div><div class="v"><a href="tel:+79175421000">8 (917) 542-10-00</a></div></div>
+          <div class="field"><div class="k">WhatsApp</div><div class="v"><a href="https://wa.me/79175421000" target="_blank" rel="noopener">8 (917) 542-10-00</a></div></div>
+          <div class="field"><div class="k">Адрес</div><div class="v">Москва, Холодильный переулок, 3с2</div></div>
+          <div class="field"><div class="k">Instagram</div><div class="v"><a href="https://www.instagram.com/soul_event_moskow" target="_blank" rel="noopener">@soul_event_moskow</a></div></div>
         </div>
 
-        <a class="cta" href="#" onclick="return false;">
-          Оставить заявку
+        <a class="cta" href="https://wa.me/79175421000" target="_blank" rel="noopener">
+          Написать в WhatsApp
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
 
