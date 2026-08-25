@@ -245,18 +245,12 @@
   .opt-card h4{ font-family:var(--font-serif); font-size:24px; font-weight:500; margin-bottom:10px; }
   .opt-card p{ font-size:14.5px; color:var(--ash); line-height:1.65; }
 
-  /* панель «1000 кв.м» вместо фото у второй опции */
-  .opt-figure{ display:flex; align-items:center; justify-content:center; text-align:center;
-    background:
-      radial-gradient(ellipse 70% 55% at 50% 40%, rgba(96,168,128,.16), transparent 65%),
-      linear-gradient(165deg, #101c15 0%, #070c09 100%); }
-  .opt-figure .fig{ position:relative; z-index:2; }
-  .opt-figure .num{ display:block; font-family:var(--font-serif); font-size:clamp(52px,7vw,78px);
-    line-height:1; color:var(--gold-soft); }
-  .opt-figure .unit{ display:block; margin-top:6px; font-size:13px; letter-spacing:.22em;
-    text-transform:uppercase; color:var(--emerald-soft); }
-  .opt-figure .rule{ width:54px; height:1px; margin:18px auto; background:linear-gradient(90deg,transparent,var(--gold),transparent); }
-  .opt-figure .sub{ display:block; font-size:12.5px; letter-spacing:.14em; color:var(--ash); }
+  /* мозаика фото второго зала у опции «Хочу больше» */
+  .opt-card .frame.opt-mosaic{ aspect-ratio:4/3; }
+  .opt-mosaic{ display:grid; grid-template-columns:repeat(3,1fr); grid-template-rows:repeat(2,1fr); gap:3px; }
+  .opt-mosaic > div{ position:relative; overflow:hidden; }
+  .opt-mosaic .m-a{ grid-column:1/3; grid-row:1; }
+  .opt-mosaic .m-b{ grid-column:3; grid-row:1; }
 
   /* ================= SLIDE 6 — КОНТАКТЫ ================= */
   #s6{ overflow:hidden; }
@@ -500,13 +494,13 @@
           </div>
         </div>
         <div class="opt-card reveal d1">
-          <div class="frame opt-figure">
-            <div class="fig">
-              <span class="num">1000</span>
-              <span class="unit">кв.м</span>
-              <span class="rule"></span>
-              <span class="sub">два зала · два этажа</span>
-            </div>
+          <div class="frame opt-mosaic">
+            <div class="m-a"><img src="images/hall2-main.jpg" alt="Второй зал Soul — паркет ёлочкой и подвесные люстры" loading="lazy" /></div>
+            <div class="m-b"><img src="images/hall2-corridor.jpg" alt="Арка во второй зал с кирпичными нишами-зеркалами" loading="lazy" /></div>
+            <div class="m-c"><img src="images/hall2-lounge.jpg" alt="Лаунж-зона второго зала со статуей и зеленью" loading="lazy" /></div>
+            <div class="m-d"><img src="images/hall2-arches.jpg" alt="Колонны и подвесные светильники второго зала" loading="lazy" /></div>
+            <div class="m-e"><img src="images/hall2-atrium.jpg" alt="Атриум второго зала с растениями" loading="lazy" /></div>
+            <span class="cap">Второй зал</span>
           </div>
           <div class="body">
             <h4>Опция «Хочу больше»</h4>
