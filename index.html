@@ -138,6 +138,28 @@
         linear-gradient(180deg, rgba(5,8,7,0.66) 0%, rgba(5,8,7,0.40) 20%, rgba(5,8,7,0.58) 58%, rgba(5,8,7,0.97) 100%);
     }
   }
+  /* оверлей должен лежать поверх кадров карусели-заставки */
+  .hero-bg::after{ z-index:2; }
+  .hero-bg img{ z-index:0; }
+  .hero-bg img.active{ z-index:1; }
+
+  /* кликабельный телефон в левом верхнем углу заставки */
+  .hero-phone{
+    position:absolute; top:clamp(18px,3vh,30px); left:clamp(16px,4vw,56px); z-index:5;
+    display:inline-flex; align-items:center; gap:9px;
+    padding:11px 20px; border-radius:99px;
+    border:1px solid rgba(228,206,143,.42);
+    background:rgba(5,8,7,.55);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    color:var(--bone); font-size:14.5px; font-weight:500; letter-spacing:.02em;
+    transition:border-color .35s ease, color .35s ease, background .35s ease;
+  }
+  .hero-phone:hover{ border-color:var(--gold-soft); color:var(--gold-soft); background:rgba(5,8,7,.72); }
+  .hero-phone svg{ width:15px; height:15px; flex:0 0 auto; }
+  @media (max-width:640px){
+    .hero-phone{ font-size:13.5px; padding:10px 16px; gap:7px; }
+  }
+
   .hero-content{ position:relative; z-index:2; text-align:center; }
   .hero-logo{
     width:clamp(190px,26vw,300px); height:auto; margin:0 auto clamp(18px,3vh,32px);
@@ -356,9 +378,17 @@
 
   <!-- ============ SLIDE 1 — HERO ============ -->
   <section class="slide" id="s1">
-    <div class="hero-bg" aria-hidden="true">
-      <img src="images/hero-chandelier.jpg" alt="" />
+    <div class="hero-bg scarousel" data-interval="6000" aria-hidden="true">
+      <img class="active" src="images/hall-wide.jpg" alt="" />
+      <img src="images/hall2-main.jpg" alt="" loading="lazy" />
+      <img src="images/hall2-arches.jpg" alt="" loading="lazy" />
+      <img src="images/hall2-hallway-wide.jpg" alt="" loading="lazy" />
     </div>
+
+    <a class="hero-phone" href="tel:+79175421000">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      8 (917) 542-10-00
+    </a>
 
     <div class="wrap hero-content reveal in">
       <img class="hero-logo" src="images/logo-mark.png" alt="Soul Event" />
@@ -418,7 +448,6 @@
         <div class="reveal">
           <div class="frame wide" style="margin-bottom:26px;">
             <img src="images/hall-bar.jpg" alt="Зал и барная стойка Soul" loading="lazy" />
-            <span class="cap">Зал и барная стойка</span>
           </div>
           <h3 class="sub">Форматы мероприятий</h3>
           <div class="tags">
@@ -452,13 +481,6 @@
             <div class="stat-card"><div class="num">300</div><div class="lbl">гостей — фуршет</div></div>
           </div>
 
-          <h3 class="sub">Стоимость на человека</h3>
-          <table class="price-table">
-            <tr><th>Формат</th><th style="text-align:right;">Цена</th></tr>
-            <tr><td>Кофе-брейк</td><td>от 1 500 ₽</td></tr>
-            <tr><td>Фуршет</td><td>от 6 000 ₽</td></tr>
-            <tr><td>Банкет</td><td>от 8 000 ₽</td></tr>
-          </table>
         </div>
       </div>
     </div>
@@ -521,15 +543,6 @@
       <h2 class="reveal" style="font-size:clamp(28px,3.8vw,44px); margin-bottom:30px;">Дополнительные опции</h2>
       <div class="opt-grid">
         <div class="opt-card reveal">
-          <div class="frame">
-            <img src="images/hookah-hero.jpg" alt="Кальяны «Соул»" loading="lazy" />
-          </div>
-          <div class="body">
-            <h4>Кальяны</h4>
-            <p>Авторские кальянные миксы для гостей — атмосферный акцент к любому формату мероприятия. Кальянный мастер работает весь вечер и подбирает вкус под каждый стол.</p>
-          </div>
-        </div>
-        <div class="opt-card reveal d1">
           <div class="frame scarousel" data-interval="4200">
             <img class="active" data-cap="Второй зал" src="images/hall2-main.jpg" alt="Второй зал Soul — паркет ёлочкой и подвесные люстры" loading="lazy" />
             <img data-cap="Арка и ниши" src="images/hall2-corridor.jpg" alt="Арка во второй зал с кирпичными нишами-зеркалами" loading="lazy" />
@@ -564,6 +577,15 @@
             <p>Возможность аренды двух залов общей площадью 1000 кв.м на двух этажах.</p>
           </div>
         </div>
+        <div class="opt-card reveal d1">
+          <div class="frame">
+            <img src="images/hookah-hero.jpg" alt="Кальяны «Соул»" loading="lazy" />
+          </div>
+          <div class="body">
+            <h4>Кальяны</h4>
+            <p>Авторские кальянные миксы для гостей — атмосферный акцент к любому формату мероприятия. Кальянный мастер работает весь вечер и подбирает вкус под каждый стол.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -586,11 +608,6 @@
           <div class="field"><div class="k">Адрес</div><div class="v">Москва, Холодильный переулок, 3с2</div></div>
           <div class="field"><div class="k">Instagram</div><div class="v"><a href="https://www.instagram.com/soul_event_moskow" target="_blank" rel="noopener">@soul_event_moskow</a></div></div>
         </div>
-
-        <a class="cta" href="https://wa.me/79175421000" target="_blank" rel="noopener">
-          Написать в WhatsApp
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
 
         <div class="foot-note">Soul Event Space · Москва</div>
       </div>
@@ -647,11 +664,16 @@
     function stop() { if (timer) clearInterval(timer); timer = null; }
     function start() { if (reduceMotion || imgs.length < 2) return; stop(); timer = setInterval(() => go(i + 1), interval); }
 
-    root.querySelector('.scarousel-btn.prev').addEventListener('click', (e) => { e.preventDefault(); go(i - 1); start(); });
-    root.querySelector('.scarousel-btn.next').addEventListener('click', (e) => { e.preventDefault(); go(i + 1); start(); });
+    const btnPrev = root.querySelector('.scarousel-btn.prev');
+    const btnNext = root.querySelector('.scarousel-btn.next');
+    if (btnPrev) btnPrev.addEventListener('click', (e) => { e.preventDefault(); go(i - 1); start(); });
+    if (btnNext) btnNext.addEventListener('click', (e) => { e.preventDefault(); go(i + 1); start(); });
     dots.forEach((d, idx) => d.addEventListener('click', () => { go(idx); start(); }));
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', start);
+    // пауза при наведении — только для карусели с управлением (фон-заставку не трогаем)
+    if (btnPrev || btnNext) {
+      root.addEventListener('mouseenter', stop);
+      root.addEventListener('mouseleave', start);
+    }
 
     render();
     start();
