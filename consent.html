@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Согласие на обработку персональных данных — Soul Event</title>
+<meta name="description" content="Текст согласия на обработку персональных данных, которое даёт гость Soul Event при отправке заявки на сайте." />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#070b09" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://soul-event.ru/consent.html" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://dancekilla1999-gif.github.io/soul-event-space/images/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://dancekilla1999-gif.github.io/soul-event-space/images/favicon-180.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#070b09;
+    --border: rgba(255,255,255,0.10);
+    --emerald-soft:#8FC1A3;
+    --gold:#C9A227;
+    --gold-soft:#E4CE8F;
+    --bone:#EDEAE0;
+    --ash:#AFBAB1;
+    --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--bone);
+    font-family:var(--font-sans);
+    font-weight:400;
+    line-height:1.5;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(143,193,163,0.10), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 100% 100%, rgba(201,162,39,0.06), transparent),
+      radial-gradient(ellipse 45% 35% at 0% 75%, rgba(96,168,128,0.07), transparent);
+  }
+  ::selection{ background: rgba(143,193,163,0.35); color:#f6faf5; }
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{ width:min(820px, 92vw); margin:0 auto; }
+
+  .topbar{
+    border-bottom:1px solid var(--border);
+    padding:22px 0;
+    position:sticky; top:0; z-index:5;
+    background:rgba(7,11,9,.86);
+    backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  }
+  .back{
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:12px; letter-spacing:.2em; text-transform:uppercase; color:var(--ash);
+    transition:color .3s ease;
+  }
+  .back:hover{ color:var(--gold-soft); }
+  .back svg{ width:14px; height:14px; flex:0 0 auto; }
+
+  header.doc{ padding:clamp(48px,8vh,90px) 0 clamp(28px,4vh,44px); }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:14px;
+    font-size:11px; letter-spacing:.32em; text-transform:uppercase; color:var(--gold-soft);
+    margin-bottom:20px;
+  }
+  .eyebrow .line{ width:40px; height:1px; background:linear-gradient(90deg, var(--gold), transparent); }
+  header.doc h1{
+    font-family:var(--font-serif); font-weight:500;
+    font-size:clamp(30px,5vw,50px); line-height:1.12; margin-bottom:18px;
+  }
+  header.doc .sub{ font-size:16px; color:var(--ash); line-height:1.65; max-width:52em; }
+  .revision{ margin-top:26px; font-size:13px; color:var(--ash); }
+
+  main{ padding-bottom:clamp(50px,8vh,90px); }
+  section.s{ margin-top:42px; }
+  section.s h2{
+    font-family:var(--font-serif); font-weight:500;
+    font-size:clamp(21px,2.6vw,27px); margin-bottom:16px; color:var(--bone);
+  }
+  section.s p{ font-size:15.5px; line-height:1.75; color:var(--bone); margin-bottom:14px; }
+  section.s p:last-child{ margin-bottom:0; }
+  section.s ul{ list-style:none; margin:0 0 14px; padding:0; }
+  section.s li{
+    position:relative; padding-left:22px; margin-bottom:10px;
+    font-size:15.5px; line-height:1.7;
+  }
+  section.s li::before{
+    content:""; position:absolute; left:4px; top:11px;
+    width:5px; height:5px; border-radius:99px; background:var(--gold); opacity:.75;
+  }
+  section.s b{ color:var(--gold-soft); font-weight:500; }
+  main a[href]{ color:var(--emerald-soft); border-bottom:1px solid rgba(143,193,163,.35); transition:color .3s ease, border-color .3s ease; }
+  main a[href]:hover{ color:var(--gold-soft); border-color:rgba(228,206,143,.5); }
+
+  .requisites{
+    margin-top:46px; border:1px solid var(--border); border-radius:4px;
+    padding:26px 28px; background:rgba(255,255,255,0.03);
+  }
+  .requisites h2{ font-family:var(--font-serif); font-weight:500; font-size:22px; margin-bottom:18px; }
+  .requisites dl{ display:grid; grid-template-columns:auto 1fr; gap:12px 22px; font-size:15px; }
+  .requisites dt{ color:var(--gold-soft); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; padding-top:4px; }
+  .requisites dd{ line-height:1.6; }
+  @media (max-width:560px){
+    .requisites{ padding:22px 20px; }
+    .requisites dl{ grid-template-columns:1fr; gap:4px 0; }
+    .requisites dd{ margin-bottom:14px; }
+    .requisites dd:last-child{ margin-bottom:0; }
+  }
+
+  footer.doc{
+    border-top:1px solid var(--border); margin-top:50px; padding:30px 0 46px;
+    font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ash);
+    display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center;
+  }
+
+  .docnav{ border-top:1px solid var(--border); margin-top:46px; padding-top:28px; }
+  .docnav p{ font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--ash); margin-bottom:14px; }
+  .docnav ul{ list-style:none; display:flex; flex-wrap:wrap; gap:10px 28px; margin:0; padding:0; }
+  .docnav li{ padding:0; margin:0; font-size:14.5px; }
+  .docnav li::before{ display:none; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a class="back" href="/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Soul Event
+    </a>
+  </div>
+</div>
+
+<header class="doc">
+  <div class="wrap">
+    <p class="eyebrow"><span class="line"></span>Документы</p>
+    <h1>Согласие на обработку персональных данных</h1>
+    <p class="sub">Что именно вы разрешаете, отмечая галочку в форме заявки на сайте.</p>
+    <p class="revision">Редакция от 5 октября 2026 г.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="s">
+      <h2>1. Согласие на обработку персональных данных</h2>
+      <p>Я, субъект персональных данных, заполняя форму на сайте soul-event.ru (далее — «Сайт») и отмечая поле «Я даю согласие на обработку персональных данных», свободно, своей волей и в своём интересе даю ИП Соломахин Андрей Михайлович (ИНН 610104705022, адрес: 115191, Москва, Холодильный переулок, 3, стр. 2; далее — «Оператор») согласие на обработку моих персональных данных на условиях, изложенных ниже.</p>
+      <p>1.1. Перечень персональных данных, на обработку которых даётся согласие:</p>
+      <ul>
+        <li>имя или иное обращение — в объёме, который я указал;</li>
+        <li>номер телефона;</li>
+        <li>сведения о мероприятии: предполагаемая дата, формат, количество гостей, пожелания;</li>
+        <li>иные сведения, которые я по своему усмотрению сообщаю в поле «Комментарий» или в последующей переписке.</li>
+      </ul>
+      <p>1.2. Цели обработки:</p>
+      <ul>
+        <li>связь со мной для подтверждения заявки, расчёта стоимости и подбора даты;</li>
+        <li>организация и проведение мероприятия на Площадке, урегулирование связанных с ним вопросов;</li>
+        <li>учёт обратной связи и улучшение качества обслуживания;</li>
+        <li>исполнение требований законодательства Российской Федерации.</li>
+      </ul>
+      <p>1.3. Перечень действий с персональными данными: сбор, запись, систематизация, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передача (предоставление, доступ) лицам, привлекаемым Оператором для обработки (провайдер хостинга Сайта, сервисы обмена сообщениями, через которые поступают заявки, оператор связи, сервис веб-аналитики), обезличивание, блокирование, удаление, уничтожение.</p>
+      <p>1.4. Способ обработки: смешанный — с использованием средств автоматизации и без их использования.</p>
+      <p>1.5. Срок действия согласия: до достижения целей обработки, установленных Политикой обработки персональных данных, либо до отзыва согласия — в зависимости от того, что наступит раньше.</p>
+      <p>1.6. Я подтверждаю, что ознакомлен с <a href="privacy.html">Политикой обработки персональных данных</a> Оператора и с моими правами субъекта персональных данных, предусмотренными Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+    </section>
+
+    <section class="s">
+      <h2>2. Передача заявки через мессенджер</h2>
+      <p>2.1. Я уведомлён, что форма на Сайте не передаёт данные на сервер Оператора: по нажатию кнопки «Отправить заявку» браузер формирует из указанных мной сведений текст сообщения и открывает его в приложении WhatsApp, откуда я отправляю сообщение самостоятельно.</p>
+      <p>2.2. Соответственно, к передаче сообщения применяются также условия сервиса WhatsApp, инфраструктура которого расположена за пределами Российской Федерации. Отправляя заявку этим способом, я соглашаюсь с такой передачей; при желании я могу вместо этого связаться с Оператором по телефону.</p>
+    </section>
+
+    <section class="s">
+      <h2>3. Отзыв согласия</h2>
+      <p>3.1. Согласие может быть отозвано в любой момент направлением заявления на электронную почту soul-rest@yandex.ru или письменно по адресу Оператора. В заявлении достаточно указать имя и номер телефона, использованные при заполнении формы.</p>
+      <p>3.2. После получения заявления Оператор прекращает обработку и уничтожает персональные данные в срок до 30 дней, за исключением данных, хранение которых обязательно в силу закона.</p>
+    </section>
+
+    <section class="s">
+      <h2>4. Порядок предоставления согласия</h2>
+      <p>Согласие считается предоставленным в момент отправки формы на Сайте с отмеченным полем «Я даю согласие на обработку персональных данных». Отправка формы без отметки этого поля технически невозможна. Согласие в форме конклюдентных действий также считается данным при обращении по телефону или в мессенджерах Оператора с целью бронирования Площадки.</p>
+    </section>
+
+    <div class="requisites">
+      <h2>Реквизиты Оператора</h2>
+      <dl>
+        <dt>Оператор</dt>
+        <dd>ИП Соломахин Андрей Михайлович</dd>
+        <dt>ИНН</dt>
+        <dd>610104705022</dd>
+        <dt>Адрес</dt>
+        <dd>115191, Москва, Холодильный переулок, 3, стр. 2</dd>
+        <dt>Телефон</dt>
+        <dd><a href="tel:+79175421000">8 (917) 542-10-00</a></dd>
+        <dt>Эл. почта</dt>
+        <dd><a href="mailto:soul-rest@yandex.ru">soul-rest@yandex.ru</a></dd>
+        <dt>Сайт</dt>
+        <dd><a href="https://soul-event.ru">soul-event.ru</a></dd>
+      </dl>
+    </div>
+
+    <nav class="docnav" aria-label="Другие документы">
+      <p>Другие документы</p>
+      <ul>
+        <li><a href="privacy.html">Политика обработки персональных данных</a></li>
+        <li><a href="marketing-consent.html">Согласие на рекламную рассылку</a></li>
+      </ul>
+    </nav>
+
+    <footer class="doc">
+      <span>Soul Event Space · Москва</span>
+      <a class="back" href="/">На главную</a>
+    </footer>
+
+  </div>
+</main>
+
+</body>
+</html>
