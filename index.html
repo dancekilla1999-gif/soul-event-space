@@ -362,6 +362,29 @@
   .request-form .rf-submit{ grid-column:1 / -1; justify-self:start; margin-top:2px; border:none; font-family:var(--font-sans); }
   .request-form .rf-note{ grid-column:1 / -1; font-size:12px; color:var(--ash); margin-top:-6px; }
   .request-form .rf-note.rf-sent{ color:var(--emerald-soft); }
+  /* галочки согласий — селекторы с .request-form, иначе правила для label/input формы
+     перебивают их по специфичности и текст уходит в верхний регистр */
+  .rf-checks{ grid-column:1 / -1; display:flex; flex-direction:column; gap:12px; margin-top:2px; }
+  .request-form .rf-check{
+    display:flex; align-items:flex-start; gap:11px; cursor:pointer;
+    font-size:12.5px; line-height:1.6; color:var(--ash);
+    text-transform:none; letter-spacing:normal; margin-bottom:0;
+  }
+  .request-form .rf-check input{
+    appearance:none; -webkit-appearance:none;
+    width:16px; height:16px; min-width:16px; margin-top:2px; padding:0; flex:0 0 auto; cursor:pointer;
+    border:1px solid rgba(255,255,255,.25); border-radius:2px; background:transparent;
+    transition:background .25s ease, border-color .25s ease;
+  }
+  .request-form .rf-check input:checked{ background:var(--gold); border-color:var(--gold); }
+  .request-form .rf-check input:checked::after{
+    content:""; display:block; width:4px; height:8px; margin:1px 0 0 5px;
+    border:solid #07130d; border-width:0 2px 2px 0; transform:rotate(45deg);
+  }
+  .request-form .rf-check input:focus-visible{ outline:2px solid rgba(228,206,143,.5); outline-offset:2px; }
+  .request-form .rf-check a{ color:var(--emerald-soft); border-bottom:1px solid rgba(143,193,163,.35); transition:color .3s ease, border-color .3s ease; }
+  .request-form .rf-check a:hover{ color:var(--gold-soft); border-color:rgba(228,206,143,.5); }
+  .request-form .rf-check.rf-check-error input{ border-color:#d98b8b; }
   @media (max-width:640px){ .request-form{ grid-template-columns:1fr; } }
   .field{
     border:1px solid var(--border); border-radius:4px; padding:15px 18px;
@@ -379,7 +402,39 @@
     border:1px solid rgba(228,206,143,.4);
     box-shadow:0 10px 34px -10px rgba(96,168,128,.55);
   }
-  .foot-note{ margin-top:40px; font-size:11.5px; letter-spacing:.12em; color:var(--ash); text-transform:uppercase; }
+  .foot-note{
+    margin-top:40px; font-size:11.5px; letter-spacing:.12em; color:var(--ash); text-transform:uppercase;
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:8px 12px;
+  }
+  .foot-note .foot-sep{ opacity:.45; }
+  @media (max-width:520px){ .foot-note .foot-sep{ display:none; } }
+  .foot-note .foot-link{ transition:color .3s ease; }
+  .foot-note .foot-link:hover{ color:var(--gold-soft); }
+
+  /* уведомление об использовании cookie */
+  .cookie-bar{
+    position:fixed; inset:auto 0 0 0; z-index:90;
+    border-top:1px solid var(--border);
+    background:rgba(7,11,9,.97);
+    backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    padding:18px clamp(16px,4vw,40px);
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px 26px;
+  }
+  .cookie-bar[hidden]{ display:none; }
+  .cookie-bar p{ font-size:12.5px; line-height:1.6; color:var(--bone); max-width:62ch; }
+  .cookie-bar a{ color:var(--emerald-soft); border-bottom:1px solid rgba(143,193,163,.35); transition:color .3s ease, border-color .3s ease; }
+  .cookie-bar a:hover{ color:var(--gold-soft); border-color:rgba(228,206,143,.5); }
+  .cookie-bar button{
+    flex:0 0 auto; cursor:pointer; font-family:var(--font-sans);
+    padding:11px 28px; border-radius:99px; border:1px solid rgba(228,206,143,.4);
+    background:linear-gradient(160deg,#a8c9b3 0%, #6fa98a 45%, #3e8464 100%);
+    color:#07130d; font-weight:500; font-size:13px; letter-spacing:.03em;
+  }
+  @media (max-width:640px){
+    .cookie-bar{ padding:16px; gap:12px; }
+    .cookie-bar p{ font-size:12px; text-align:center; }
+    .cookie-bar button{ width:100%; }
+  }
 
   @media (max-width:640px){
     .slide{ padding-top:76px; padding-bottom:64px; }
@@ -683,6 +738,16 @@
             <label for="rf-comment">Комментарий</label>
             <textarea id="rf-comment" name="comment" placeholder="Дата, формат мероприятия, количество гостей — по желанию"></textarea>
           </div>
+          <div class="rf-checks">
+            <label class="rf-check" id="rf-consent-row">
+              <input type="checkbox" id="rf-consent" name="consent" />
+              <span>Я даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> на условиях <a href="privacy.html" target="_blank" rel="noopener">политики обработки персональных данных</a></span>
+            </label>
+            <label class="rf-check">
+              <input type="checkbox" id="rf-marketing" name="marketing" />
+              <span>Хочу получать новости и предложения заведения — даю <a href="marketing-consent.html" target="_blank" rel="noopener">согласие на рекламную рассылку</a> (необязательно)</span>
+            </label>
+          </div>
           <button class="cta rf-submit" type="submit">Отправить заявку</button>
           <p class="rf-note" id="rf-note">Заявка уйдёт нам в WhatsApp — ответим в ближайшее время.</p>
         </form>
@@ -694,11 +759,16 @@
           <div class="field"><div class="k">Instagram</div><div class="v"><a href="https://www.instagram.com/soul_event_moscow/" target="_blank" rel="noopener">@soul_event_moscow</a></div></div>
         </div>
 
-        <div class="foot-note">Soul Event Space · Москва</div>
+        <div class="foot-note">Soul Event Space · Москва<span class="foot-sep">·</span><a class="foot-link" href="privacy.html">Политика обработки персональных данных</a><span class="foot-sep">·</span><a class="foot-link" href="consent.html">Согласие на обработку</a><span class="foot-sep">·</span><a class="foot-link" href="marketing-consent.html">Согласие на рассылку</a></div>
       </div>
     </div>
   </section>
 
+</div>
+
+<div class="cookie-bar" id="cookie-bar" role="dialog" aria-label="Уведомление об использовании cookie" hidden>
+  <p>Мы используем файлы cookie для корректной работы сайта и аналитики посещаемости. Продолжая пользоваться сайтом, вы соглашаетесь с <a href="privacy.html">политикой в отношении файлов cookie</a>.</p>
+  <button type="button" id="cookie-accept">Принять</button>
 </div>
 
 <script>
@@ -791,6 +861,22 @@
     });
   });
 
+  // уведомление о cookie — показывается, пока гость не нажмёт «Принять»
+  const cookieBar = document.getElementById('cookie-bar');
+  if (cookieBar) {
+    const COOKIE_KEY = 'cookie-consent-ack';
+    let acknowledged = false;
+    try { acknowledged = !!localStorage.getItem(COOKIE_KEY); } catch (err) { /* приватный режим — просто покажем */ }
+    if (!acknowledged) cookieBar.hidden = false;
+    const acceptBtn = document.getElementById('cookie-accept');
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', () => {
+        try { localStorage.setItem(COOKIE_KEY, '1'); } catch (err) { /* не сохранилось — не страшно */ }
+        cookieBar.hidden = true;
+      });
+    }
+  }
+
   // форма заявки — без бэкенда, поэтому оформляем заявку сообщением в WhatsApp
   const requestForm = document.getElementById('request-form');
   if (requestForm) {
@@ -799,6 +885,9 @@
       const name = requestForm.name.value.trim();
       const phone = requestForm.phone.value.trim();
       const comment = requestForm.comment.value.trim();
+      const consent = document.getElementById('rf-consent');
+      const marketing = document.getElementById('rf-marketing');
+      const consentRow = document.getElementById('rf-consent-row');
       const note = document.getElementById('rf-note');
 
       if (!name || !phone) {
@@ -810,8 +899,22 @@
         return;
       }
 
+      // без согласия на обработку персональных данных заявку не отправляем
+      if (consent && !consent.checked) {
+        if (note) {
+          note.textContent = 'Отметьте согласие на обработку персональных данных.';
+          note.classList.remove('rf-sent');
+        }
+        if (consentRow) consentRow.classList.add('rf-check-error');
+        consent.focus();
+        return;
+      }
+      if (consentRow) consentRow.classList.remove('rf-check-error');
+
       let text = `Заявка с сайта Soul Event\nИмя: ${name}\nТелефон: ${phone}`;
       if (comment) text += `\nКомментарий: ${comment}`;
+      text += `\nСогласие на обработку ПДн: да`;
+      text += `\nРассылка: ${marketing && marketing.checked ? 'согласен' : 'не согласен'}`;
       if (typeof ym === 'function') ym(113022548, 'reachGoal', 'lead_form');
       window.open(`https://wa.me/79175421000?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
 
