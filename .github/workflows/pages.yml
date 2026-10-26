@@ -32,3 +32,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
           publish_branch: gh-pages
+          # сайт обслуживается GitHub Pages на домене soul-event.ru: IP-адреса
+          # прежнего хостинга резали провайдеры, и сайт не открывался из России
+          cname: soul-event.ru
